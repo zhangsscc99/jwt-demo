@@ -21,6 +21,9 @@ public class LoginInterceptor implements HandlerInterceptor {
             if (auth != null && auth.required()) {
                 String token = request.getHeader("token");
                 if (StringUtils.isNotBlank(token)) {
+                    if (TokenUtils.verifyToken(token)) {
+                        return true;
+                    }
                     // todo list
 
 

@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 @Getter
 @AllArgsConstructor
-public enum ErrorEnum {
+public enum ResponseEnum {
     SUCCESS(200, "操作成功"),
     FAIL(300, "获取数据失败"),
     USER_EX(301, "user not existed, login again"),

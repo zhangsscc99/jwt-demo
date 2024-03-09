@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorContro
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import top.lukeewin.jwtdemo2.annotation.Auth;
+import top.lukeewin.jwtdemo2.utils.TokenUtil;
 
 public class LoginInterceptor implements HandlerInterceptor {
     @Override
@@ -21,8 +22,10 @@ public class LoginInterceptor implements HandlerInterceptor {
             if (auth != null && auth.required()) {
                 String token = request.getHeader("token");
                 if (StringUtils.isNotBlank(token)) {
-                    if (TokenUtils.verifyToken(token)) {
+                    if (TokenUtil.verifyToken(token)) {
                         return true;
+                    } else {
+                        request.getRequestDispatcher("/error/tokenError").forward(request, response);
                     }
                     // todo list
 

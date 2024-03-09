@@ -27,7 +27,7 @@ public class TokenUtil {
                 .withIssuer(ISSUER)
                 .withExpiresAt(DateUtil.offsetMinute(new Date(), EXPIRE_TIME))
                 .withClaim("test", "123")
-                .sign(Algorithm.HMAC256(ENCRYPT_KEY))
+                .sign(Algorithm.HMAC256(ENCRYPT_KEY));
 
 
 
